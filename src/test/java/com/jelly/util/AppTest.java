@@ -1,4 +1,4 @@
-package jellyutil;
+package com.jelly.util;
 
 import static org.junit.Assert.assertTrue;
 
