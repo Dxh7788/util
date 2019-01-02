@@ -27,7 +27,7 @@ public class HttpClientUtil {
         //参数
         StringBuffer params = new StringBuffer();
         try {
-            params.append("params="+ URLEncoder.encode("{\"token\":\"3f09aa160289427881e3081bf27cabed\",\"enterpriseId\":23}","utf-8"));
+            params.append("params="+ URLEncoder.encode("{\"token\":\"3f09aa160289427881e3081bf27cabed\",\"enterpriseId\":31}","utf-8"));
             params.append("&");
             params.append("from=W");
         }catch (Exception e){

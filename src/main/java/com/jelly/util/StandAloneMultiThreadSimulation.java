@@ -72,7 +72,7 @@ public class StandAloneMultiThreadSimulation {
         }
 
         /**
-         * 获取每个线程的开始时间和结束时间
+         * 获取每个线程的开始时间和结束时间`
          */
         for (int i : records.keySet()) {
             ThreadRecord r = records.get(i);
