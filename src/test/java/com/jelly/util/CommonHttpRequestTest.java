@@ -15,6 +15,7 @@ public class CommonHttpRequestTest {
             JSONObject params = new JSONObject();
             params.put("token","3f09aa160289427881e3081bf27cabed");
             params.put("enterpriseId","33");
+            params.put("manner","0");
             HttpClientUtil.getAndPost("userConcernCoreEnterprise","",params);
         }catch (Exception e){
             e.printStackTrace();
