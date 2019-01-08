@@ -10,23 +10,12 @@ import org.junit.Test;
 public class CommonHttpRequestTest {
 
     @Test
-    public void unConcern(){
+    public void userConcernCoreEnterprise(){
         try {
             JSONObject params = new JSONObject();
             params.put("token","3f09aa160289427881e3081bf27cabed");
             params.put("enterpriseId","33");
-            HttpClientUtil.getAndPost("unConcern","",params );
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    @Test
-    public void concern(){
-        try {
-            JSONObject params = new JSONObject();
-            params.put("token","3f09aa160289427881e3081bf27cabed");
-            params.put("enterpriseId","33");
-            HttpClientUtil.getAndPost("concern","",params);
+            HttpClientUtil.getAndPost("userConcernCoreEnterprise","",params);
         }catch (Exception e){
             e.printStackTrace();
         }

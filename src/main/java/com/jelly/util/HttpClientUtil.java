@@ -129,7 +129,7 @@ public class HttpClientUtil {
     }
 
     public static String request(String request,JSONObject params){
-        String baseUrl = HttpClientUtil.DEFAULT_LOCAL_URL;
+        String baseUrl = HttpClientUtil.DEFAULT_BASE_URL;
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(request);
         url.append("?");
