@@ -21,7 +21,7 @@ public class CommonHttpRequest {
             url.append("&");
             url.append("from=W");
             System.out.println(url);
-            HttpClientUtil.getAndPost(url.toString(), "");
+            HttpClientUtil.getAndPost(url.toString(), "", params);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -77,7 +77,8 @@ public class HttpClientUtil {
         }
     }
 
-    public static void getAndPost(String url, String s1) {
+    public static void getAndPost(String requestShortName, String s1, JSONObject params) {
+        String url = request(requestShortName,params);
         BufferedReader in = null;
 
         String content = null;
@@ -86,7 +87,6 @@ public class HttpClientUtil {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         // 实例化HTTP方法
         //参数
-        StringBuffer params = new StringBuffer();
         HttpGet request = new HttpGet(url);
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(5000)
