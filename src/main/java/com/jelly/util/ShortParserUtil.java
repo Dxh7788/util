@@ -11,14 +11,15 @@ public class ShortParserUtil {
 
     public static void main(String[] args) {
 
-        if (getPrefixBooleanValue() &&
+        /*if (getPrefixBooleanValue() &&
                 getSuffixBooleanValue()){
             System.out.println(">>>执行语句内逻辑...");
         }
 
         if (getLoopReturnValue()){
             System.out.println("保证成功获取");
-        }
+        }*/
+        tryLoop();
     }
 
     private static Boolean getPrefixBooleanValue(){
@@ -41,6 +42,26 @@ public class ShortParserUtil {
                 return exit;
             }
             exit = true;
+        }
+    }
+
+    private static Boolean tryLoop(){
+        Boolean failed =true;
+        try {
+            Boolean retValue = false;
+            for (;;){
+                if (getPrefixBooleanValue()){
+                    failed = false;
+                    return retValue;
+                }
+                if (getSuffixBooleanValue()){
+                    retValue = true;
+                }
+            }
+        }finally {
+            if (failed){
+                System.out.println("finally release");
+            }
         }
     }
 }
