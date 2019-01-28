@@ -15,7 +15,7 @@ public class CommonHttpRequestTest {
             JSONObject params = new JSONObject();
             params.put("token","3f09aa160289427881e3081bf27cabed");
             params.put("enterpriseId","33");
-            params.put("manner","0");
+            params.put("manner","1");
             HttpClientUtil.getAndPost("userConcernCoreEnterprise","",params);
         }catch (Exception e){
             e.printStackTrace();
@@ -25,8 +25,8 @@ public class CommonHttpRequestTest {
     public void coreEnterpriseHomeBaseInfo(){
         try {
             JSONObject params = new JSONObject();
-            params.put("token","3f09aa160289427881e3081bf27cabed");
-            params.put("enterpriseId",151);
+            params.put("token","f244d65b6e614f4d9a0da5885b27409f");
+            params.put("enterpriseId",45);
             HttpClientUtil.getAndPost("coreEnterpriseHomeBaseInfo", "", params);
         }catch (Exception e){
             e.printStackTrace();
