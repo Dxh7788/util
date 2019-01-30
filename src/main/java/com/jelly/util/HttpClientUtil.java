@@ -19,6 +19,7 @@ import java.net.URLEncoder;
 public class HttpClientUtil {
     public static final String DEFAULT_LOCAL_URL = "http://localhost:8080/api/3.0/m/";
     public static final String DEFAULT_BASE_URL = "http://10.10.1.58:8080/api/3.0/m/";
+    public static final String PRODUCT_BASE_URL = "https://www.daokoudai.com/api/2.0/W/";
     public static void sendGet(String url, String s1) {
         BufferedReader in = null;
 
@@ -77,7 +78,7 @@ public class HttpClientUtil {
         }
     }
 
-    public static void getAndPost(String requestShortName, String s1, JSONObject params) {
+    public static String getAndPost(String requestShortName, String s1, JSONObject params) {
         String url = request(requestShortName,params);
         BufferedReader in = null;
 
@@ -100,7 +101,8 @@ public class HttpClientUtil {
 
             HttpEntity httpEntity = response.getEntity();
             if (httpEntity != null) {
-                System.out.println("响应内容为:" + EntityUtils.toString(httpEntity));
+//                System.out.println("响应内容为:" + EntityUtils.toString(httpEntity));
+                return EntityUtils.toString(httpEntity);
             }
             /*in = new BufferedReader(new InputStreamReader(response.getEntity()
                     .getContent()));
@@ -112,6 +114,7 @@ public class HttpClientUtil {
             }
             in.close();
             content = sb.toString();*/
+            return "";
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -126,10 +129,11 @@ public class HttpClientUtil {
                 e.printStackTrace();
             }
         }
+        return "";
     }
 
     public static String request(String request,JSONObject params){
-        String baseUrl = HttpClientUtil.DEFAULT_BASE_URL;
+        String baseUrl = HttpClientUtil.PRODUCT_BASE_URL;
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(request);
         url.append("?");

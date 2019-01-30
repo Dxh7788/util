@@ -32,4 +32,12 @@ public class CommonHttpRequestTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void listCoreEnterprise(){
+        JSONObject params = new JSONObject();
+        params.put("token","");
+        params.put("page","");
+        params.put("size",1000);
+        System.out.println(HttpClientUtil.getAndPost("listCoreEnterprise","",params));
+    }
 }
