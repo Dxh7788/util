@@ -1,0 +1,89 @@
+一、关于jvm字节码
+invokestatic:调用静态方法,编译时绑定
+invokespecical:用于调用私有实例方法即private修饰、构造器,以及用super关键字调用父类的实例方法或构造器,和所实现接口的默认方法即接口中使用default修饰的方法.
+invokeinterface:调用所实现的接口的方法.
+invokevirtual:调用菲斯有实例方法
+invokedynamic:用于调用动态方法.
+
+其中，invokeinterface和invokevirtual有一点儿区别，具体区别使用如下实例来说明:
+public class World implements Earth{
+	private final int a = 10;
+    private final int b = 10;
+    private float c = 11f;
+    private float d = 11f;
+    private float e = 11f;
+
+    @Override
+    public void plant(){
+    	System.out.println("Child exe...");
+    }
+
+    public static void main(String[] args) {
+    	Earth world = new World();
+    	world.plant();
+    }
+}
+其中Earth world = new World();实例化的子类的引用给了父类,而父类是一个接口,这时会使用invokeinterface而不是invokespecial.
+java字节码如下:
+public static void main(java.lang.String[]);
+    Code:
+       0: new           #11                 // class World
+       3: dup
+       4: invokespecial #12                 // Method "<init>":()V
+       7: astore_1
+       8: aload_1
+       9: invokeinterface #13,  1           // InterfaceMethod Earth.plant:()V
+      14: return
+但是如果这句话改成
+World world = new World();直接使用实例类作为引用的类型，这时则会使用invokevirtual。java字节码如下:
+public static void main(java.lang.String[]);
+    Code:
+       0: new           #11                 // class World
+       3: dup
+       4: invokespecial #12                 // Method "<init>":()V
+       7: astore_1
+       8: aload_1
+       9: invokevirtual #13                 // Method plant:()V
+      12: return
+而对于 invokevirtual 以及 invokeinterface 而言，在绝大部分情况下，虚拟机需要在执行过程中，根据调用者的动态类型，来确定具体的目标方法。
+二、接口符号和非接口符号
+接口符号前缀为interface比如interfaceMethodRef:接口方法符号
+非接口符号不带前缀interface比如MethodRef。
+这两者之间在应用上有很大的区别.
+对于非接口符号引用，嘉定该符号引用所指向的类为C，则Java虚拟机会按照如下步骤进行查找。
+在C中查找符合名字及描述符的方法。
+如果没有找到，在C的父类中继续搜索，直至Object类。
+如果没有找到，在C所直接实现或间接实现的接口中搜索，这一步搜索得到的目标方法必须是非私有的、非静态的。并且，如果目标方法在间接实现的，则需满足C于该接口之间没有其他符合条件的目标方法。如果有多个符合条件的目标方法，则任意返回其中一个。
+如果说一个方法即存在于父类中,又存在于直接或者间接实现的接口中,该怎么分析呢？
+这个时候相当于父类实现了接口,而子类重写了父类的同名接口.
+虽然父类没有直接实现接口,但是在子类的继承关系中,隐性的代表父类实现类接口.比如以下方式.
+OverrideUtil.java
+public class OverrideUtil extends POverride implements PIOverride {
+
+
+    public void print(int a){
+        System.out.println("void print");
+    }
+}
+
+POverride.java
+public class POverride {
+
+    public void inherit(){
+        System.out.println("class void inherit();");
+    }
+}
+PIOverride.java
+public interface PIOverride {
+    void inherit();
+}
+使用idea时可以发现,无论POverride是否直接实现PIOverride,它的形式都相当于
+public class POverride implements PIOverride{
+
+    @Override
+    public void inherit(){
+        System.out.println("class void inherit();");
+    }
+}
+区别在是否会有@Override来直接注明两者之间的关系。而且父类无法使用向上引用,比如PIOverride util = new POverride();是无法通过编译的。仍然是子类才能使用这种方式，方式如下:
+PIOverride util = new OverrideUtil();
