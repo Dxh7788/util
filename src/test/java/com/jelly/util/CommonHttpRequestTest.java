@@ -25,9 +25,8 @@ public class CommonHttpRequestTest {
     public void coreEnterpriseHomeBaseInfo(){
         try {
             JSONObject params = new JSONObject();
-            params.put("token","f244d65b6e614f4d9a0da5885b27409f");
-            params.put("enterpriseId",45);
-            HttpClientUtil.getAndPost("coreEnterpriseHomeBaseInfo", "", params);
+            params.put("token","bfda4441c6ad41c28c582469543c42db");
+            HttpClientUtil.getAndPost("dataAuditList", "", params);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -39,5 +38,8 @@ public class CommonHttpRequestTest {
         params.put("page","");
         params.put("size",1000);
         System.out.println(HttpClientUtil.getAndPost("listCoreEnterprise","",params));
+    }@Test
+    public void listCoreEnterprise2(){
+        System.out.println(HttpClientUtil.getAndPost("manual_audit","",null));
     }
 }

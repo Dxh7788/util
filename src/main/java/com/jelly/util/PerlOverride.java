@@ -6,7 +6,7 @@ package com.jelly.util;
  */
 public class PerlOverride {
 
-    public void inherit(){
+    /*public void inherit(){
         System.out.println("class void inherit();");
-    }
+    }*/
 }

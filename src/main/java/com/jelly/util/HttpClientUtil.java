@@ -20,6 +20,7 @@ public class HttpClientUtil {
     public static final String DEFAULT_LOCAL_URL = "http://localhost:8080/api/3.0/m/";
     public static final String DEFAULT_BASE_URL = "http://10.10.1.58:8080/api/3.0/m/";
     public static final String PRODUCT_BASE_URL = "https://www.daokoudai.com/api/2.0/W/";
+    public static final String PRODUCT_BASE_URL2 = "http://10.10.1.58:8080/api/3.0/appStore/";
     public static void sendGet(String url, String s1) {
         BufferedReader in = null;
 
@@ -133,10 +134,11 @@ public class HttpClientUtil {
     }
 
     public static String request(String request,JSONObject params){
-        String baseUrl = HttpClientUtil.PRODUCT_BASE_URL;
+        String baseUrl = HttpClientUtil.PRODUCT_BASE_URL2;
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(request);
         url.append("?");
+        url.append("apiName=daokoudai&appKey=55555555&channel=appstore&from=IC&imei=475021a550b4448d96fbadd762906444&");
         try {
             url.append("params="+URLEncoder.encode(params.toString(),"utf-8"));
         }catch (Exception e){
@@ -145,6 +147,19 @@ public class HttpClientUtil {
         url.append("&");
         url.append("from=W");
         System.out.println(url.toString());
+        return url.toString();
+    }
+
+    public static String request2(String request,JSONObject params){
+        String baseUrl = HttpClientUtil.PRODUCT_BASE_URL2;
+        StringBuilder url = new StringBuilder(baseUrl);
+        url.append(request);
+        url.append("?");
+        try {
+            url.append("id=17&suggestion=&status=REJECT");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return url.toString();
     }
 }

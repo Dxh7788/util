@@ -7,12 +7,12 @@ package com.jelly.util;
 public class OverrideUtil extends PerlOverride implements PerlIsOverride {
 
 
-    public void print(int a){
+    /*public void print(int a){
         System.out.println("void print");
     }
 
     public static void main(String[] args) {
         PerlIsOverride util = new OverrideUtil();
         util.inherit();
-    }
+    }*/
 }

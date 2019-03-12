@@ -8,5 +8,5 @@ public interface PerlIsOverride {
     /**
      * 继承关系的测试方法
      * */
-    void inherit();
+    /*void inherit();*/
 }
