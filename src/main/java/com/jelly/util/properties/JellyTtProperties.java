@@ -14,5 +14,15 @@ public class JellyTtProperties {
         for (String name:names){
             System.out.println("属性key:"+name+",属性值:"+properties.getProperty(name));
         }
+        try {
+
+            String flag = "1";
+            switch (flag) {
+                default:
+                    throw new UnsupportedOperationException("111");
+            }
+        }catch (Exception e){
+            System.out.println("捕获异常");
+        }
     }
 }

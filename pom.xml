@@ -36,6 +36,13 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.openjdk.jcstress/jcstress-core -->
+    <dependency>
+      <groupId>org.openjdk.jcstress</groupId>
+      <artifactId>jcstress-core</artifactId>
+      <version>0.5</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
