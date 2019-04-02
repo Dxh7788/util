@@ -87,11 +87,15 @@ public class ClassFileStream {
     /**
      * 获取一个字节/获取2个字节/获取4个字节
      * */
-    public byte[] getU1Fast(){
+    public byte getU1Fast(){
         byte[] value = new byte[3];
-        System.arraycopy(this.buf,current,value,0,3);
-        current+=3;
-        return value;
+        System.arraycopy(this.buf,current,value,0,1);
+        current+=1;
+        if (value.length==1){
+            return value[0];
+        }else {
+            return 0;
+        }
     }
     public byte[] getU2Fast(){
         byte[] value = new byte[2];
@@ -153,6 +157,46 @@ public class ClassFileStream {
          * 解析常量池
          * 常量池大小
          * */
-        stream.getU1Fast();
+        byte[] constantPool = stream.getU2Fast();
+        int constantPoolSize = ((constantPool[0]&0xff)<<16)|(constantPool[1]&0xff);
+        System.out.println("#======常量池大小为:"+constantPoolSize+"======#");
+        System.out.println("#======开始解析常量池======#");
+        for (int i = 0;i < constantPoolSize ; i++){
+            int tag = stream.getU1Fast()&0xff;
+            switch (tag){
+                case Constant.Tag.CONSTANT_Utf8:
+                    break;
+                case Constant.Tag.CONSTANT_Unicode:
+                    break;
+                case Constant.Tag.CONSTANT_Integer:
+                    break;
+                case Constant.Tag.CONSTANT_Float:
+                    break;
+                case Constant.Tag.CONSTANT_Long:
+                    break;
+                case Constant.Tag.CONSTANT_Double:
+                    break;
+                case Constant.Tag.CONSTANT_Class:
+                    break;
+                case Constant.Tag.CONSTANT_String:
+                    break;
+                case Constant.Tag.CONSTANT_FieldRef:
+                    break;
+                case Constant.Tag.CONSTANT_MethodRef:
+                    break;
+                case Constant.Tag.CONSTANT_InterfaceMethodRef:
+                    break;
+                case Constant.Tag.CONSTANT_NameAndType:
+                    break;
+                case Constant.Tag.CONSTANT_MethodHandle:
+                    break;
+                case Constant.Tag.CONSTANT_MethodType:
+                    break;
+                case Constant.Tag.CONSTANT_InvokeDynamic:
+                    break;
+                default:
+                    throw new IllegalAccessError();
+            }
+        }
     }
 }
