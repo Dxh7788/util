@@ -48,6 +48,12 @@ public class ClassFileStream {
                 destPos += size;
             }
         }
+        /**
+         * 关闭流
+         * */
+        if (is!=null){
+            is.close();
+        }
         System.out.println("#======文件内容读取完毕======#");
         this.source = source;
         this.needVerify = needVerify;
