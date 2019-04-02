@@ -88,14 +88,21 @@ public class ClassFileStream {
      * 获取一个字节/获取2个字节/获取4个字节
      * */
     public byte[] getU1Fast(){
-        return null;
+        byte[] value = new byte[3];
+        System.arraycopy(this.buf,current,value,0,3);
+        current+=3;
+        return value;
     }
     public byte[] getU2Fast(){
-        return null;
+        byte[] value = new byte[2];
+        System.arraycopy(this.buf,current,value,0,2);
+        current+=2;
+        return value;
     }
     public byte[] getU4Fast(){
         byte[] value = new byte[4];
-        System.arraycopy(this.buf,0,value,0,4);
+        System.arraycopy(this.buf,current,value,0,4);
+        current+=4;
         return value;
     }
     /**
@@ -123,10 +130,29 @@ public class ClassFileStream {
     public static void main(String[] args) throws Exception {
         ClassFileStream stream = new ClassFileStream(new byte[24],"com.jelly.util.model.User",false,1024);
         byte[] magic = stream.getU4Fast();
+        /**
+         * 获取 cafebabe 魔法值
+         * */
         for (int i = 0;i<magic.length;i++){
             int v = magic[i]&0xff;
             String hv = Integer.toHexString(v);
             System.out.print(hv);
         }
+        /**
+         * 获取大小版本
+         * */
+        byte[] version = stream.getU4Fast();
+        StringBuffer verBuf =new StringBuffer();
+        for (int i = 0;i<version.length;i++){
+            int v = version[i]&0xff;
+            String hv = Integer.toHexString(v);
+            verBuf.append(hv);
+        }
+        System.out.println(verBuf.toString());
+        /**
+         * 解析常量池
+         * 常量池大小
+         * */
+        stream.getU1Fast();
     }
 }
