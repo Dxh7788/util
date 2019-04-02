@@ -88,7 +88,7 @@ public class ClassFileStream {
      * 获取一个字节/获取2个字节/获取4个字节
      * */
     public byte getU1Fast(){
-        byte[] value = new byte[3];
+        byte[] value = new byte[1];
         System.arraycopy(this.buf,current,value,0,1);
         current+=1;
         if (value.length==1){
@@ -116,21 +116,44 @@ public class ClassFileStream {
 
     }
     public void skipU1Fast(){
-
+        current+=1;
     }
     public void skipU2(){
 
     }
     public void skipU2Fast(){
-
+        current+=2;
     }
+
     public void skipU3(){
 
     }
     public void skipU3Fast(){
+        current+=3;
+    }
+    public void skipU4(){
 
     }
+    public void skipU4Fast(){
+        current+=4;
+    }
 
+    public void skipU8(){
+
+    }
+    public void skipU8Fast(){
+        current+=8;
+    }
+    public void skipSize(int utfSize) {
+        current +=utfSize;
+    }
+
+    public byte[] getUtfContent(int utfSize) {
+        byte[] value = new byte[utfSize];
+        System.arraycopy(this.buf,current,value,0,utfSize);
+        current +=utfSize;
+        return value;
+    }
     public static void main(String[] args) throws Exception {
         ClassFileStream stream = new ClassFileStream(new byte[24],"com.jelly.util.model.User",false,1024);
         byte[] magic = stream.getU4Fast();
@@ -161,36 +184,51 @@ public class ClassFileStream {
         int constantPoolSize = ((constantPool[0]&0xff)<<16)|(constantPool[1]&0xff);
         System.out.println("#======常量池大小为:"+constantPoolSize+"======#");
         System.out.println("#======开始解析常量池======#");
-        for (int i = 0;i < constantPoolSize ; i++){
+        for (int i = 0;i < constantPoolSize-1 ; i++){
             int tag = stream.getU1Fast()&0xff;
             switch (tag){
                 case Constant.Tag.CONSTANT_Utf8:
+                    /**读出字符串长度*/
+                    byte[] l = stream.getU2Fast();
+                    int utfSize = (l[0]&0xff)<<16|(l[1]&0xff);
+                    String content = new String(stream.getUtfContent(utfSize));
+                    System.out.println("字符串长度为:"+utfSize+",内容为:"+content);
                     break;
                 case Constant.Tag.CONSTANT_Unicode:
                     break;
                 case Constant.Tag.CONSTANT_Integer:
+                    stream.skipU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_Float:
+                    stream.skipU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_Long:
+                    stream.skipU8Fast();
                     break;
                 case Constant.Tag.CONSTANT_Double:
+                    stream.skipU8Fast();
                     break;
                 case Constant.Tag.CONSTANT_Class:
+                    stream.skipU2Fast();
                     break;
                 case Constant.Tag.CONSTANT_String:
                     break;
                 case Constant.Tag.CONSTANT_FieldRef:
-                    break;
                 case Constant.Tag.CONSTANT_MethodRef:
+                    /*跳过4字节*/
+                    stream.skipU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_InterfaceMethodRef:
+                    stream.skipU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_NameAndType:
+                    stream.skipU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_MethodHandle:
+                    stream.skipU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_MethodType:
+                    stream.skipU2Fast();
                     break;
                 case Constant.Tag.CONSTANT_InvokeDynamic:
                     break;
