@@ -155,7 +155,7 @@ public class ClassFileStream {
         return value;
     }
     public static void main(String[] args) throws Exception {
-        ClassFileStream stream = new ClassFileStream(new byte[24],"com.jelly.util.model.Food",false,1024);
+        ClassFileStream stream = new ClassFileStream(new byte[24],"com.jelly.util.model.User",false,1024);
         byte[] magic = stream.getU4Fast();
         /**
          * 获取 cafebabe 魔法值
@@ -197,16 +197,19 @@ public class ClassFileStream {
                 case Constant.Tag.CONSTANT_Unicode:
                     break;
                 case Constant.Tag.CONSTANT_Integer:
-                    stream.skipU4Fast();
+                    byte[] ibs = stream.getU4Fast();
+                    int val = ((ibs[3]<<24)&0xff000000)|((ibs[2]<<16)&0xff0000)|((ibs[1]<<8)&0xff00)|(ibs[0]&0xff);
+                    System.out.println("Integer值为:"+val);
                     break;
                 case Constant.Tag.CONSTANT_Float:
-                    stream.skipU4Fast();
+                    byte[] fbs = stream.getU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_Long:
+                    byte[] lbs = stream.getU4Fast();
                     stream.skipU8Fast();
                     break;
                 case Constant.Tag.CONSTANT_Double:
-                    stream.skipU8Fast();
+                    byte[] bds = stream.getU4Fast();
                     break;
                 case Constant.Tag.CONSTANT_Class:
                     stream.skipU2Fast();
