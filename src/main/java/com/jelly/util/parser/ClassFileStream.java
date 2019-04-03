@@ -155,7 +155,7 @@ public class ClassFileStream {
         return value;
     }
     public static void main(String[] args) throws Exception {
-        ClassFileStream stream = new ClassFileStream(new byte[24],"com.jelly.util.model.User",false,1024);
+        ClassFileStream stream = new ClassFileStream(new byte[24],"com.jelly.util.model.Food",false,1024);
         byte[] magic = stream.getU4Fast();
         /**
          * 获取 cafebabe 魔法值
@@ -212,6 +212,7 @@ public class ClassFileStream {
                     stream.skipU2Fast();
                     break;
                 case Constant.Tag.CONSTANT_String:
+                    stream.skipU2Fast();
                     break;
                 case Constant.Tag.CONSTANT_FieldRef:
                 case Constant.Tag.CONSTANT_MethodRef:

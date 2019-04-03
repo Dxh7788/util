@@ -1,5 +1,6 @@
 package com.jelly.util.model;
 
+
 import com.jelly.util.base.Active;
 
 /**
