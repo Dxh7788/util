@@ -27,9 +27,10 @@ public class ImgCompress {
     public static void main(String[] args) throws Exception{
         String srcFile = "/Users/dongxiaohong/Downloads/WechatIMG3.jpeg";
         String distFile = "/Users/dongxiaohong/Downloads/WechatIMG3_jwt.jpeg";
+        String distFile2 = "/Users/dongxiaohong/Downloads/WechatIMG3_jw.jpeg";
         TimeWatch.start();
 //        for (int i=0;i<10;i++) {
-            awtImgPress(srcFile, distFile, 1f);
+            awtImgPress(distFile, distFile2, -0.1f);
 //        }
         TimeWatch.end();
     }
