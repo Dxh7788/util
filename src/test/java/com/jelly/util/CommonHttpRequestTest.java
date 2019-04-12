@@ -16,7 +16,7 @@ public class CommonHttpRequestTest {
             params.put("token","3f09aa160289427881e3081bf27cabed");
             params.put("enterpriseId","33");
             params.put("manner","1");
-            HttpClientUtil.getAndPost("userConcernCoreEnterprise","",params);
+            HttpClientUtil.getAndPost("signPromiseLetter","",params);
         }catch (Exception e){
             e.printStackTrace();
         }

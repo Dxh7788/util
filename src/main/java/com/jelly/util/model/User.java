@@ -23,4 +23,9 @@ public class User {
     public void setPwd(String pwd) {
         this.pwd = pwd;
     }
+
+    public static void main(String[] args) {
+        User user = new User();
+        user.setName("ddd");
+    }
 }

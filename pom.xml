@@ -17,7 +17,12 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
-
+  <!-- Inherit defaults from Spring Boot -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.4.RELEASE</version>
+  </parent>
   <dependencies>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -42,6 +47,28 @@
       <artifactId>jcstress-core</artifactId>
       <version>0.5</version>
       <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+    <dependency>
+      <groupId>net.coobird</groupId>
+      <artifactId>thumbnailator</artifactId>
+      <version>0.4.8</version>
+    </dependency>
+    <!-- Add typical dependencies for a web application -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.geoserver.community/libjpeg-turbo -->
+    <!--<dependency>
+      <groupId>org.geoserver.community</groupId>
+      <artifactId>libjpeg-turbo</artifactId>
+      <version>2.2.6-ENTERPRISE</version>
+    </dependency>-->
+    <dependency>
+      <groupId>org.bytedeco.javacpp-presets</groupId>
+      <artifactId>opencv</artifactId>
+      <version>3.4.3-1.4.3</version>
     </dependency>
   </dependencies>
 

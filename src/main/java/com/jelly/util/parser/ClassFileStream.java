@@ -1,6 +1,10 @@
 package com.jelly.util.parser;
 
+import com.jelly.util.parser.base.Type;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author dongxiaohong
@@ -184,7 +188,9 @@ public class ClassFileStream {
         int constantPoolSize = ((constantPool[0]&0xff)<<16)|(constantPool[1]&0xff);
         System.out.println("#======常量池大小为:"+constantPoolSize+"======#");
         System.out.println("#======开始解析常量池======#");
-        for (int i = 0;i < constantPoolSize-1 ; i++){
+        /**用数组保存所有信息*/
+        Type[] types = new Type[constantPoolSize];
+        for (int i = 1;i < constantPoolSize ; i++){
             int tag = stream.getU1Fast()&0xff;
             switch (tag){
                 case Constant.Tag.CONSTANT_Utf8:
