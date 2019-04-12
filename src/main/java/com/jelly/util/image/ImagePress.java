@@ -33,7 +33,7 @@ public class ImagePress {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
         String path="/Users/dongxiaohong/Downloads";
-        String fileName = "WechatIMG3.jpeg";
+        String fileName = "baidu_jkl.jpg";
         try {
            /* File file = new File(path+File.separator+fileName);
             if (!file.exists()){
@@ -114,6 +114,8 @@ public class ImagePress {
              * OpenCV压缩
              * */
             //openCVPress(srcFile,distFile);
+
+            swingImgPress(path+File.separator+fileName,1,path+File.separator+"baidu_jkl_1.jpg");
         }catch (Exception e){
             e.printStackTrace();
         }

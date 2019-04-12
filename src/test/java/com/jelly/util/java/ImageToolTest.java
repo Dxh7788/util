@@ -1,40 +1,30 @@
-package com.jelly.util.image;
+package com.jelly.util.java;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.image.AreaAveragingScaleFilter;
-import java.awt.image.BufferedImage;
-import java.awt.image.FilteredImageSource;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.Iterator;
-import java.util.Random;
+import com.jelly.util.watch.TimeWatch;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import org.junit.Test;
+
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.jelly.util.watch.TimeWatch;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import java.awt.*;
+import java.awt.image.AreaAveragingScaleFilter;
+import java.awt.image.BufferedImage;
+import java.awt.image.FilteredImageSource;
+import java.io.*;
+import java.util.Iterator;
+import java.util.Random;
 
 /**
  * 处理图片的工具类
  * @author dongxiaohong
  * @version 1.0
  * */
-public class ImageTool implements Serializable {
+public class ImageToolTest implements Serializable {
     private static String srcFile = "/Users/dongxiaohong/Downloads/WechatIMG3.jpeg";
     private static String base = "/Users/dongxiaohong/Downloads/";
     private static String distFile = "/Users/dongxiaohong/Downloads/WechatIMG3_zoom.jpeg";
@@ -59,6 +49,35 @@ public class ImageTool implements Serializable {
         //bean.fontImg("D:\\opt\\log\\http_imgload2.jpg", "中国", new Font("Atlantic Inline", Font.PLAIN, 18), Color.GREEN, 200, 100);
     }
 
+    @Test
+    public void bringCodeTest(){
+        bean.bringCode(null, null);
+    }
+
+    @Test
+    public void cutTest(){
+        bean.cut(base,filePath, 200, 100, 100, 100);
+    }
+
+    @Test
+    public void reduceTest(){
+        bean.reduce(base,filePath,  500, 500, true);
+    }
+
+    @Test
+    public void waterTest(){
+        bean.water(srcFile,bean.outputFile);
+    }
+
+    @Test
+    public void rotateTest(){
+        bean.rotate(base,filePath,  90, null);
+    }
+
+    @Test
+    public void zoomTest(){
+        bean.zoom(base, filePath, 1, null);
+    }
     private static final long serialVersionUID = 1L;
     private String outputFile = "D:\\test\\aa.jpg";
 
@@ -346,13 +365,13 @@ public class ImageTool implements Serializable {
     }
 
     private char mapTable[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-    private static ImageTool bean = new ImageTool();
+    private static ImageToolTest bean = new ImageToolTest();
 
     /**
      * @see 以单例模式创建，获得对象实例
      * @return Image
      */
-    public static ImageTool getBean() {
+    public static ImageToolTest getBean() {
         return bean;
     }
 
