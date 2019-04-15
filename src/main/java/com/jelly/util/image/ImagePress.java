@@ -1,18 +1,12 @@
 package com.jelly.util.image;
 
-import com.jelly.util.watch.TimeWatch;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import net.coobird.thumbnailator.Thumbnails;
-import org.apache.commons.codec.binary.Base64;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.springframework.core.task.TaskExecutor;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
