@@ -17,7 +17,7 @@ public class ClosureUtil {
         List<String> ids = new ArrayList<>();
         ids.add("123");
         ids.add("345");
-        ids.forEach(id->{
+        /*ids.forEach(id->{
             System.out.println(id);
         });
         ids.forEach(System.out::println);
@@ -34,6 +34,6 @@ public class ClosureUtil {
         users.forEach(u->{
             new Jelly(bj->{
             }).start(u);
-        });
+        });*/
     }
 }
