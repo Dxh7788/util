@@ -65,7 +65,6 @@ public class NioImageReader {
                         graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, 0.9f));
                         graphics2D.dispose();
                         ImageIO.write(srcImg2, "jpg", new File("/Users/dongxiaohong/Downloads/2018-10-02 161343"+Thread.currentThread().getName()+".jpeg"));
-                        reader.setInput(input);
                         input.close();
                     } catch (IOException e) {
                         e.printStackTrace();
