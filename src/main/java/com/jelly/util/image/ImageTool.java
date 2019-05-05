@@ -13,6 +13,7 @@ public class ImageTool implements Serializable {
     private static String distFile = "/Users/dongxiaohong/Downloads/WechatIMG3_zoom.jpeg";
     private static String filePath = "WechatIMG3.jpeg";
     public static void main(String[] args) {
+    
         *//**生成随机的注册验证码*//*
         bean.bringCode(null, null);
         *//**裁剪图片*//*

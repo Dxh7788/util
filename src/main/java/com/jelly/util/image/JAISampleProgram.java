@@ -24,6 +24,7 @@ public class JAISampleProgram {
             e.printStackTrace();
             System.exit(0);
         }
+
         RenderedOp image1 = JAI.create("stream", stream);
         Interpolation interp = Interpolation.getInstance(
                 Interpolation.INTERP_BILINEAR);
