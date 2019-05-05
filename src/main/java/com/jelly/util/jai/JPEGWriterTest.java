@@ -45,6 +45,8 @@ public class JPEGWriterTest {
             2,2,2,2,2,2,2,2,
             2,2,2,2,2,2,2,2
     };
+
+
     private static int[] qtable3 = {
             3,3,3,3,3,3,3,3,
             3,3,3,3,3,3,3,3,
