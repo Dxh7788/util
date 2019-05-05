@@ -76,8 +76,30 @@
       <artifactId>aliyun-sdk-oss</artifactId>
       <version>2.4.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.alibaba/simpleimage -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>simpleimage</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>simpleimage</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.sun.media/jai-codec -->
+    <dependency>
+      <groupId>com.sun.media</groupId>
+      <artifactId>jai-codec</artifactId>
+      <version>1.1.3</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.media/jai-core -->
+    <dependency>
+      <groupId>javax.media</groupId>
+      <artifactId>jai-core</artifactId>
+      <version>1.1.3</version>
+    </dependency>
   </dependencies>
-
   <build>
     <pluginManagement><!-- lgit ock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
