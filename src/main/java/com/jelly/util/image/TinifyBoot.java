@@ -18,6 +18,7 @@ public class TinifyBoot {
         Tinify.setKey("qLtE6CKG9Skamd1SHiPSGACkvw7icuU6");
         //Tinify.setProxy("");
         Source source = Tinify.fromFile(srcFileName);
+
         source.toFile(distFileName);
         TimeWatch.end();
     }
