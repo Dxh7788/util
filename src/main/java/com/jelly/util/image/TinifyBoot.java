@@ -16,6 +16,7 @@ public class TinifyBoot {
     public static void main(String[] args) throws IOException {
         TimeWatch.start();
         Tinify.setKey("qLtE6CKG9Skamd1SHiPSGACkvw7icuU6");
+        //Tinify.setProxy("");
         Source source = Tinify.fromFile(srcFileName);
         source.toFile(distFileName);
         TimeWatch.end();
