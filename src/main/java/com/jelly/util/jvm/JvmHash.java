@@ -1,5 +1,7 @@
 package com.jelly.util.jvm;
 
+import java.math.BigDecimal;
+
 /**
  * @author dongxiaohong
  * @date 2019/5/9 16:43
@@ -11,15 +13,18 @@ public class JvmHash {
      * */
     public static void main(String[] args) {
         Integer h=0;
-        String s = "Hello";
+        String nul = null;
+        String s = "I'm a good boy!!!";
         int len = s.length();
         char[] chars = s.toCharArray();
         for (int i=0;i<len;i++){
             h = 31*h + chars[i];
         }
+        JvmHash jvmHash = new JvmHash();
         System.out.println(h);
         System.out.println(s.hashCode());
-        System.out.println(pow(32,2));
+        System.out.println(Integer.toHexString(jvmHash.hashCode()));
+        System.out.println(jvmHash.toString());
     }
 
     public static int pow(int a,int b){
