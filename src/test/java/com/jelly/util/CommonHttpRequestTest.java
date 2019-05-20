@@ -1,5 +1,7 @@
 package com.jelly.util;
 
+import com.google.gson.JsonObject;
+import com.jelly.util.base.UrlAsk;
 import net.sf.json.JSONObject;
 import org.junit.Test;
 
@@ -42,4 +44,15 @@ public class CommonHttpRequestTest {
     public void listCoreEnterprise2(){
         System.out.println(HttpClientUtil.getAndPost("manual_audit","",null));
     }
+
+    @Test
+    public void adminListAdminUsers(){
+        JSONObject params = new JSONObject();
+
+        UrlAsk urlAsk = new UrlAsk();
+        params.put("key","name");
+        params.put("value",687);
+        HttpClientUtil.sendPost("http://localhost:8081/urlresource/values",params.toString());
+    }
+
 }

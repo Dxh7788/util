@@ -5,9 +5,12 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.springframework.http.MediaType;
 
 import java.io.BufferedReader;
 import java.net.URLEncoder;
@@ -21,6 +24,43 @@ public class HttpClientUtil {
     public static final String DEFAULT_BASE_URL = "http://10.10.1.58:8080/api/3.0/m/";
     public static final String PRODUCT_BASE_URL = "https://www.daokoudai.com/api/2.0/W/";
     public static final String PRODUCT_BASE_URL2 = "http://10.10.1.58:8080/api/3.0/appStore/";
+
+    public static void sendPost(String url,String ins){
+        BufferedReader in = null;
+
+        String content = null;
+
+        // 定义HttpClient
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url);
+        // 实例化HTTP方法
+        //参数
+        StringBuffer params = new StringBuffer();
+        CloseableHttpResponse response = null;
+        try {
+            StringEntity entity = new StringEntity(ins);
+            entity.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            post.setEntity(entity);
+            response = httpClient.execute(post);
+            HttpEntity httpEntity = response.getEntity();
+            if (httpEntity != null) {
+                System.out.println("响应内容为:" + EntityUtils.toString(httpEntity));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if (httpClient != null) {
+                    httpClient.close();// 最后要关闭BufferedReader
+                }
+                if (response != null) {
+                    response.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public static void sendGet(String url, String s1) {
         BufferedReader in = null;
 

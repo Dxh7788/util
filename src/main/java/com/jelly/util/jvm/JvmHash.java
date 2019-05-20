@@ -1,6 +1,8 @@
 package com.jelly.util.jvm;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author dongxiaohong
@@ -25,6 +27,11 @@ public class JvmHash {
         System.out.println(s.hashCode());
         System.out.println(Integer.toHexString(jvmHash.hashCode()));
         System.out.println(jvmHash.toString());
+
+        List<Integer> ls = new ArrayList<>();
+        ls.add(1);
+        //ls.remove(1);
+        System.out.println(ls);
     }
 
     public static int pow(int a,int b){
