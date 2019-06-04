@@ -1,6 +1,5 @@
 package com.jelly.util;
 
-import com.google.gson.JsonObject;
 import com.jelly.util.base.UrlAsk;
 import net.sf.json.JSONObject;
 import org.junit.Test;
@@ -15,10 +14,9 @@ public class CommonHttpRequestTest {
     public void userConcernCoreEnterprise(){
         try {
             JSONObject params = new JSONObject();
-            params.put("token","3f09aa160289427881e3081bf27cabed");
-            params.put("enterpriseId","33");
-            params.put("manner","1");
-            HttpClientUtil.getAndPost("signPromiseLetter","",params);
+            params.put("curPage","2");
+            params.put("size","10");
+            HttpClientUtil.getAndPost("overdueEnterpriseList","",params);
         }catch (Exception e){
             e.printStackTrace();
         }
