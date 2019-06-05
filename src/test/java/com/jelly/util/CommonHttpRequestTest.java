@@ -14,7 +14,7 @@ public class CommonHttpRequestTest {
     public void userConcernCoreEnterprise(){
         try {
             JSONObject params = new JSONObject();
-            params.put("curPage","2");
+            params.put("curPage","1");
             params.put("size","10");
             HttpClientUtil.getAndPost("overdueEnterpriseList","",params);
         }catch (Exception e){
