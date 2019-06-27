@@ -4,6 +4,8 @@ import com.jelly.util.base.UrlAsk;
 import net.sf.json.JSONObject;
 import org.junit.Test;
 
+import java.util.TreeMap;
+
 /**
  * @author dongxiaohong
  * @date 2019/1/8 10:39
@@ -53,4 +55,24 @@ public class CommonHttpRequestTest {
         HttpClientUtil.sendPost("http://localhost:8081/urlresource/values",params.toString());
     }
 
+    @Test
+    public void testMap(){
+        TreeMap<String,String> treeMap = new TreeMap<>();
+        treeMap.put("1","123");
+        treeMap.put("2","1234");
+        treeMap.put("3","1235");
+        treeMap.put("4","1236");
+        treeMap.put("5","1237");
+        treeMap.put("7","1238");
+        treeMap.put("8","1239");
+        treeMap.put("9","1230");
+        treeMap.put("10","1218");
+        treeMap.put("11","1228");
+        treeMap.put("12","1208");
+        treeMap.put("13","1248");
+        treeMap.put("14","1258");
+        treeMap.put("15","1298");
+        treeMap.put("16","1288");
+        treeMap.put("0","1238");
+    }
 }
