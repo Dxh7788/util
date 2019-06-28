@@ -23,6 +23,7 @@ public class CommonHttpRequestTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void coreEnterpriseHomeBaseInfo(){
         try {
@@ -33,6 +34,7 @@ public class CommonHttpRequestTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void listCoreEnterprise(){
         JSONObject params = new JSONObject();
@@ -40,7 +42,9 @@ public class CommonHttpRequestTest {
         params.put("page","");
         params.put("size",1000);
         System.out.println(HttpClientUtil.getAndPost("listCoreEnterprise","",params));
-    }@Test
+    }
+
+    @Test
     public void listCoreEnterprise2(){
         System.out.println(HttpClientUtil.getAndPost("manual_audit","",null));
     }
