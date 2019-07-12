@@ -4,7 +4,8 @@ import com.jelly.util.base.UrlAsk;
 import net.sf.json.JSONObject;
 import org.junit.Test;
 
-import java.util.TreeMap;
+import java.util.*;
+import java.util.concurrent.Executors;
 
 /**
  * @author dongxiaohong
@@ -28,8 +29,12 @@ public class CommonHttpRequestTest {
     public void coreEnterpriseHomeBaseInfo(){
         try {
             JSONObject params = new JSONObject();
-            params.put("token","bfda4441c6ad41c28c582469543c42db");
-            HttpClientUtil.getAndPost("dataAuditList", "", params);
+            params.put("token","20150728000000008064da398a");
+            params.put("marketingActivityId","2");
+            params.put("coreEnterpriseId","774");
+            params.put("bonusCategoryId","45");
+            params.put("marketingSourceId","13");
+            HttpClientUtil.getAndPost("marketingActivity/drawInvestReturnBonus", "", params);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -78,5 +83,31 @@ public class CommonHttpRequestTest {
         treeMap.put("15","1298");
         treeMap.put("16","1288");
         treeMap.put("0","1238");
+    }
+
+    @Test
+    public void r(){
+
+        List<String> s = new LinkedList<>();
+        s.add("1");
+        s.add("5");
+        s.add("2");
+        s.add("3");
+        Collections.sort(s, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        System.out.println(s.indexOf("5"));
+        System.out.println(s);
+        /*Executors.newFixedThreadPool(5).submit(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    System.out.println("12313123");
+                }
+            }
+        });*/
     }
 }

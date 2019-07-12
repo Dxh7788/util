@@ -21,7 +21,7 @@ import java.net.URLEncoder;
  */
 public class HttpClientUtil {
     public static final String DEFAULT_LOCAL_URL = "http://localhost:8080/api/3.0/m/";
-    public static final String DEFAULT_BASE_URL = "http://10.10.2.72:8080/api/3.0/m/";
+    public static final String DEFAULT_BASE_URL = "http://10.10.2.72:8080/3.0/m/";
     public static final String PRODUCT_BASE_URL = "https://www.daokoudai.com/api/2.0/W/";
     public static final String PRODUCT_BASE_URL2 = "http://10.10.1.58:8080/api/3.0/appStore/";
 
@@ -174,7 +174,7 @@ public class HttpClientUtil {
     }
 
     public static String request(String request,JSONObject params){
-        String baseUrl = HttpClientUtil.DEFAULT_BASE_URL;
+        String baseUrl = HttpClientUtil.DEFAULT_LOCAL_URL;
         StringBuilder url = new StringBuilder(baseUrl);
         url.append(request);
         url.append("?");
