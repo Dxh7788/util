@@ -31,9 +31,8 @@ public class CommonHttpRequestTest {
             JSONObject params = new JSONObject();
             params.put("token","20150728000000008064da398a");
             params.put("marketingActivityId","2");
-            params.put("coreEnterpriseId","774");
-            params.put("bonusCategoryId","45");
-            params.put("marketingSourceId","13");
+            params.put("coreEnterpriseId","757");
+            params.put("bonusCategoryId","34");
             HttpClientUtil.getAndPost("marketingActivity/drawInvestReturnBonus", "", params);
         }catch (Exception e){
             e.printStackTrace();
@@ -83,6 +82,11 @@ public class CommonHttpRequestTest {
         treeMap.put("15","1298");
         treeMap.put("16","1288");
         treeMap.put("0","1238");
+    }
+    @Test
+    public void identify(){
+        String url ="http://localhost:8083/enterpriseAudit/identifyAudit?id=772&status=true&idea=&industryType=H&scale=&country=CHN&province=天津市&city=南开区&address=玉竹大厦&enterpriseType=1&partnerEnterpriseId=&coreEnterpriseId=&isBranch=false&superCountry=&superProvince=&superCity=&superAddress=";
+        HttpClientUtil.sendGet(url,null);
     }
 
     @Test

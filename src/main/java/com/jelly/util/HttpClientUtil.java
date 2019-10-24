@@ -38,9 +38,9 @@ public class HttpClientUtil {
         StringBuffer params = new StringBuffer();
         CloseableHttpResponse response = null;
         try {
-            StringEntity entity = new StringEntity(ins);
-            entity.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-            post.setEntity(entity);
+            //StringEntity entity = new StringEntity();
+            //entity.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            //post.setEntity(entity);
             response = httpClient.execute(post);
             HttpEntity httpEntity = response.getEntity();
             if (httpEntity != null) {
@@ -71,14 +71,14 @@ public class HttpClientUtil {
         // 实例化HTTP方法
         //参数
         StringBuffer params = new StringBuffer();
-        try {
+        /*try {
             params.append("params="+ URLEncoder.encode("{\"token\":\"3f09aa160289427881e3081bf27cabed\",\"enterpriseId\":31}","utf-8"));
             params.append("&");
             params.append("from=W");
         }catch (Exception e){
             e.printStackTrace();
-        }
-        HttpGet request = new HttpGet(url+"?"+params);
+        }*/
+        HttpGet request = new HttpGet(url);
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(5000)
                 .setConnectionRequestTimeout(5000)
